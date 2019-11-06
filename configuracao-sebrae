@@ -1,3 +1,135 @@
 Mercado azul
 usuário homologação: jonatas.carvalho@connectdf.com.br
 senha: 123456
+
+
+### Tools
+
+# * KSE (Somente para configurar o certificado da Rede do Sebrae https://keystore-explorer.org/downloads.html)
+
+keytool -import -trustcacerts -noprompt -keystore cacerts -storepass changeit -alias "Sebrae" -file checkpoint.pem 
+
+$JAVA_HOME/jre/bin/keytool \
+-keystore $JAVA_HOME/jre/lib/security/cacerts \
+-importcert \
+-alias "Sebrae" \
+-file "checkpoint.pem"
+
+mvn install -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.ignore.validity.dates=true
+
+git config http.sslVerify false
+
+export GIT_SSL_NO_VERIFY=1
+
+sudo cp checkpoint.pem /usr/local/share/ca-certificates
+
+# * Intellij (Lembrar de instalar o plugin lombok)
+
+Neste link é para poder que a ide aceite pt-br -> https://github.com/rafaelsc/IntelliJ.Portuguese.Brazil.Dictionary
+
+# * Postman
+
+apt-get install \
+git \
+node \
+java 1.8 \
+maven \
+
+### Backend
+
+mvn clean install -DskipTests
+
+mvn spring-boot:run
+
+docker run -d --name sonarqube -p 9000:9000 sonarqube
+
+mvn clean install && mvn sonar:sonar \
+-Dsonar.projectKey=mercado-azul \
+-Dsonar.host.url=http://localhost:9000 \
+-Dsonar.login=73b563ab337880c43e1fe7e4921690936dfeadf9 \
+-Dsonar.projectKey=mercadoazul-backend \
+-Dsonar.projectName=mercadoazul-backend \
+-Dsonar.jacoco.reportPaths=./build/jacoco/test.exec \
+-Dsonar.junit.reportPaths=./build/test-results/test \
+-Dsonar.sources=src/main \
+-Dsonar.java.binaries=target/classes \
+-Dsonar.sourceEncoding=UTF-8 \
+-Dsonar.language=java \
+-Dsonar.exclusions="**/*DTO*.java,**/*VO*.java, **/*Mapper.java, **/*Listener.java, **/*Config.java, **/config/**/*.java*, **/Application.java, **/*Exception.java, **/*Exception.java, **/*Enum*.java, **/domain/**/*.java, **/FornecedorService*.java, **/GeoLocalizacao*.java"
+
+
+### Front
+
+# Visual Code
+
+# * node
+# * npm
+
+# para desabilitar o ssl e conseguir executar o npm install
+npm set strict-ssl false
+
+npm install
+npm start
+
+
+##
+pkill nautilus
+
+alexandre.lovatini@castgroup.com.br
+
+https://rancher.sebrae.com.br/ (Ver log)
+
+
+# Homologação
+https://homolog-api-mercadoazul.sebrae.com.br/
+http://homolog-madashboard.sebrae.com.br/
+http://homolog-mercadoazul.sebrae.com.br/
+
+# Produção
+http://api-mercadoazul.sebrae.com.br/
+http://madashboard.sebrae.com.br/
+http://mercadoazul.sebrae.com.br/
+
+
+
+https://devops.sebrae.com.br
+
+# Caso erro abaixo:
+
+1) ERROR: Build step failed with exception
+com.github.dockerjava.api.exception.DockerClientException: Could not push image: unauthorized: authentication required
+
+==> Rebuild Last
+
+2)  [ERROR] Tests run: 220, Failures: 0, Errors: 2, Skipped: 0
+
+==> Corrigir erro e subir nova MR
+
+
+
+
+### Links uteis
+
+https://gitlab.sebrae.com.br/
+
+https://devops.sebrae.com.br/
+
+https://sonar.sebrae.com.br/
+
+https://nexus.sebrae.com.br/
+
+https://rancher.sebrae.com.br
+
+https://amei.sebrae.com.br/auth/
+
+
+### Documentos de arquitetura
+
+https://gitlab.sebrae.com.br/interno/boas-praticas/diretrizes/wikis/home
+
+### Banco de dados
+
+- Microsoft SQL Server 2014 (SP2) (KB3171021) - 12.0.5000.0 (X64) 
+- Jun 17 2016 19:14:09 
+- Copyright (c) Microsoft Corporation
+- Developer Edition (64-bit) on Windows NT 6.2 <X64> (Build 9200: ) (Hypervisor)
