@@ -4,6 +4,17 @@ senha: 123456
 
 
 ### Tools
+https://stackoverflow.com/questions/50498681/suncertpathbuilderexception-unable-to-find-valid-certification-path-to-requeste
+cd %java_home%\jre\lib\security
+path=%java_home\bin
+keytool -import -alias comodo -keystore cacerts -file C:\path\ComodoRoot.cer
+keytool -import -alias comodo_intermediate -keystore cacerts -file C:\path\ComodoInter.cer
+keytool -import -alias purchased_cert -keystore cacerts -file C:\path\my_purchased_cert.crt
+
+FUNCIONOU NO WINDOWS
+https://pt.stackoverflow.com/questions/268526/pkix-path-building-failed-sun-security-provider-certpath-suncertpathbuilderexce
+"%JAVA_HOME%/jre/bin/keytool" -keystore "%JAVA_HOME%/jre/lib/security/cacerts" -importcert -alias CertificadoSebrae -file "C:/certificado/sebrae.cer"
+
 
 # * KSE (Somente para configurar o certificado da Rede do Sebrae https://keystore-explorer.org/downloads.html)
 
