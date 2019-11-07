@@ -2,6 +2,15 @@ Mercado azul
 usuário homologação: jonatas.carvalho@connectdf.com.br
 senha: 123456
 
+###PYTHON
+https://developer.mozilla.org/pt-BR/docs/Learn/Common_questions/Como_configurar_um_servidor_de_testes_local
+Navegar até a pasta onde está o projeto
+
+# Se a versão do Python retornada acima for 3.X
+python3 -m http.server
+# No windows, tente "python" em vez de "python3"
+# Se a versão do Python retornada acima for 2.X
+python -m SimpleHTTPServer
 
 ### Tools
 https://stackoverflow.com/questions/50498681/suncertpathbuilderexception-unable-to-find-valid-certification-path-to-requeste
